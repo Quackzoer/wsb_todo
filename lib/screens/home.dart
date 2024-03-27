@@ -54,24 +54,39 @@ class _HomeScreenState extends State<HomeScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(todo.task ?? ""),
-                            Text(capitalize(
-                                todo.priority.toString().split(".").last)),
+                            Text(
+                              capitalize(
+                                todo.priority.toString().split(".").last,
+                              ),
+                            ),
                           ],
                         ),
-                        IconButton(
-                          onPressed: () {
-                            isarInstance.writeTxn(() async {
-                              todo.done = !todo.done;
-                              await isarInstance.todos.put(todo);
-                            }).then(
-                              (value) {
-                                _getTodos();
+                        Row(
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                isarInstance.writeTxn(() async {
+                                  todo.done = !todo.done;
+                                  await isarInstance.todos.put(todo);
+                                }).then(
+                                  (value) {
+                                    _getTodos();
+                                  },
+                                );
+                                setState(() {});
                               },
-                            );
-                            setState(() {});
-                          },
-                          icon: Icon(
-                              todo.done ? Icons.check : Icons.square_outlined),
+                              icon: Icon(todo.done
+                                  ? Icons.check
+                                  : Icons.square_outlined),
+                            ),
+                            const SizedBox(width: 10),
+                            IconButton(
+                              onPressed: () {
+                                TaskRoute(id: todo.id).go(context);
+                              },
+                              icon: const Icon(Icons.edit),
+                            ),
+                          ],
                         )
                       ],
                     ),
