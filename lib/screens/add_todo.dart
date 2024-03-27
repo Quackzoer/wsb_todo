@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wsb_todo/utils/router/main.dart';
 
 class AddTodoScreen extends StatefulWidget {
   const AddTodoScreen({super.key});
@@ -11,6 +12,18 @@ class AddTodoScreen extends StatefulWidget {
 class _AddTodoScreenState extends State<AddTodoScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("To-do App"),
+        leading: BackButton(
+          onPressed: (){
+            HomeScreenRoute().go(context);
+          },
+        )
+      ),
+      body: const Center(
+        child: Text("Add To Do"),
+      ),
+    );
   }
 }

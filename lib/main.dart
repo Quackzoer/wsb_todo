@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:wsb_todo/utils/database/database.dart';
 import 'package:wsb_todo/utils/router/main.dart';
 
 
-void main() {
+void main() async {
+  await initializeIsarCore();
   runApp(const MyApp());
 }
 
