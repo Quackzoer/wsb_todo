@@ -5,9 +5,9 @@ import 'package:wsb_todo/screens/home.dart';
 import 'package:wsb_todo/screens/add_todo.dart';
 import 'package:wsb_todo/screens/task.dart';
 
-part 'router.g.dart';
+part 'main.g.dart';
 
-final _router = GoRouter(routes: $appRoutes);
+GoRouter router = GoRouter(routes: $appRoutes);
 
 @TypedGoRoute<HomeScreenRoute>(
   path: HomeScreen.path,
