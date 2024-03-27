@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wsb_todo/collections/todo.dart';
+import 'package:wsb_todo/utils/capitalize.dart';
 import 'package:wsb_todo/utils/database/database.dart';
 import 'package:wsb_todo/utils/router/main.dart';
 
@@ -69,7 +70,7 @@ class _AddTodoScreenState extends State<AddTodoScreen> {
                         value: priority,
                         child: Row(
                           children: [
-                            Text(priority),
+                            Text(capitalize(priority)),
                           ],
                         ),
                       );
