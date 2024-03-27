@@ -12,7 +12,7 @@ class AddTodoScreen extends StatefulWidget {
   State<AddTodoScreen> createState() => _AddTodoScreenState();
 }
 
-List<String> priorities = Priority.values.map((e) => e.toString()).toList();
+List<String> priorities = Priority.values.map((e) => e.toString().split(".").last).toList();
 
 class _AddTodoScreenState extends State<AddTodoScreen> {
   final _formKey = GlobalKey<FormState>();
