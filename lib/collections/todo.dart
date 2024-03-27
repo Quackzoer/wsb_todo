@@ -7,7 +7,7 @@ class Todo{
   Id id = Isar.autoIncrement;
   String? task;
   String? description;
-  bool? done;
+  bool done = false;
   @enumerated
   late Priority priority;
 }

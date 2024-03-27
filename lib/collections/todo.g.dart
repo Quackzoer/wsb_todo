@@ -94,7 +94,7 @@ Todo _todoDeserialize(
 ) {
   final object = Todo();
   object.description = reader.readStringOrNull(offsets[0]);
-  object.done = reader.readBoolOrNull(offsets[1]);
+  object.done = reader.readBool(offsets[1]);
   object.id = id;
   object.priority =
       _TodopriorityValueEnumMap[reader.readByteOrNull(offsets[2])] ??
@@ -113,7 +113,7 @@ P _todoDeserializeProp<P>(
     case 0:
       return (reader.readStringOrNull(offset)) as P;
     case 1:
-      return (reader.readBoolOrNull(offset)) as P;
+      return (reader.readBool(offset)) as P;
     case 2:
       return (_TodopriorityValueEnumMap[reader.readByteOrNull(offset)] ??
           Priority.high) as P;
@@ -369,23 +369,7 @@ extension TodoQueryFilter on QueryBuilder<Todo, Todo, QFilterCondition> {
     });
   }
 
-  QueryBuilder<Todo, Todo, QAfterFilterCondition> doneIsNull() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNull(
-        property: r'done',
-      ));
-    });
-  }
-
-  QueryBuilder<Todo, Todo, QAfterFilterCondition> doneIsNotNull() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNotNull(
-        property: r'done',
-      ));
-    });
-  }
-
-  QueryBuilder<Todo, Todo, QAfterFilterCondition> doneEqualTo(bool? value) {
+  QueryBuilder<Todo, Todo, QAfterFilterCondition> doneEqualTo(bool value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'done',
@@ -801,7 +785,7 @@ extension TodoQueryProperty on QueryBuilder<Todo, Todo, QQueryProperty> {
     });
   }
 
-  QueryBuilder<Todo, bool?, QQueryOperations> doneProperty() {
+  QueryBuilder<Todo, bool, QQueryOperations> doneProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'done');
     });
